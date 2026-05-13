@@ -23,7 +23,7 @@ const ROADMAP_APP = {
         {
             title: "Análisis de Madurez",
             description: "Evaluación técnica de capacidades digitales y brechas operativas.",
-            image: "imagenes/digitalroadmapadmin2.png"
+            image: "imagenes/jumosol1.jpeg"
         }
     ]
 };
