@@ -8,7 +8,7 @@ const GOZEN_APP = {
         {
             title: "Matriz de Polivalencia",
             description: "Visualización técnica de equipos, procesos y autoevaluaciones en tiempo real.",
-            image: "imagenes/panel.png"
+            image: "imagenes/jumosol2.jpeg"
         }
     ]
 };
