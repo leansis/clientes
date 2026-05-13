@@ -16,14 +16,14 @@ const GOZEN_APP = {
 const ROADMAP_APP = {
     screens: [
         {
-            title: "Hoja de Ruta Digital",
-            description: "Visualización de hitos, objetivos y estado de digitalización por áreas.",
-            image: "imagenes/digitalroadmapadmin.png"
+            title: "Terminal de Operación en Planta",
+            description: "Interfaz operativa para gestionar tareas, registrar producción y controlar incidencias en tiempo real.",
+            image: "imagenes/jumosol1.jpeg"
         },
         {
-            title: "Análisis de Madurez",
-            description: "Evaluación técnica de capacidades digitales y brechas operativas.",
-            image: "imagenes/jumosol1.jpeg"
+            title: "Gestión Estratégica TOP 60",
+            description: "Cuadro de mando integral con seguimiento de ahorros, productividad y reuniones estratégicas por área.",
+            image: "imagenes/jumosol2.jpeg"
         }
     ]
 };
@@ -73,7 +73,6 @@ function initScrollReveal() {
         });
     }, observerOptions);
 
-    // CAMBIO AQUÍ: Añadimos '.feature-row' para que los nuevos videos también se revelen
     const targetElements = document.querySelectorAll('.screenshot-container, .video-container, .feature-row');
     targetElements.forEach(el => observer.observe(el));
 }
