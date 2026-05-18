@@ -3,7 +3,7 @@ const GOZEN_APP = {
         {
             title: "Panel de Administración",
             description: "Gestión centralizada de empresas y usuarios con acceso maestro.",
-            image: "imagenes/panleadmin.png"
+            image: "imagenes/paneladmin.png"
         },
         {
             title: "Matriz de Polivalencia",
