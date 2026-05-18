@@ -45,8 +45,8 @@ function renderApps() {
         `).join('');
     }
 
-    if (roadmapGrid) {
-        roadmapGrid.innerHTML = ROADMAP_APP.screens.map((screen) => `
+    if (jumosolGrid) {
+        jumosolGrid.innerHTML = JUMOSOL_APP.screens.map((screen) => `
             <div class="screenshot-container">
                 <div class="screenshot-info">
                     <h3>${screen.title}</h3>
