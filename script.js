@@ -23,7 +23,7 @@ const JUMOSOL_APP = {
         {
             title: "Matriz de Polivalencia",
             description: "Visualización técnica de equipos, procesos y autoevaluaciones en tiempo real.",
-            image: "imagenes/jumosol-top-60.png"
+            image: "imagenes/jumosol-top60.png"
         }
     ]
 };
