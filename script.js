@@ -16,13 +16,13 @@ const GOZEN_APP = {
 const JUMOSOL_APP = {
     screens: [
         {
-            title: "Panel de Administración",
-            description: "Gestión centralizada de empresas y usuarios con acceso maestro.",
+            title: "Dashboard OEE",
+            description: "Cuadro de mando del área que muestra en tiempo real los tres indicadores OEE.",
             image: "imagenes/jumosol-top5-dash.png"
         },
         {
-            title: "Matriz de Polivalencia",
-            description: "Visualización técnica de equipos, procesos y autoevaluaciones en tiempo real.",
+            title: "Gestión TOP 60",
+            description: "Módulo de dirección que agrupa las herramientas de análisis y reporte.",
             image: "imagenes/jumosol-top60.png"
         }
     ]
