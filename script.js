@@ -18,34 +18,20 @@ const JUMOSOL_APP = {
         {
             title: "Panel de Administración",
             description: "Gestión centralizada de empresas y usuarios con acceso maestro.",
-            image: "imagenes/jumosol1.jpeg"
+            image: "imagenes/jumosol-top5-dash.png"
         },
         {
             title: "Matriz de Polivalencia",
             description: "Visualización técnica de equipos, procesos y autoevaluaciones en tiempo real.",
-            image: "imagenes/jumosol2.jpeg"
+            image: "imagenes/jumosol-top-60.png"
         }
     ]
 };
 
-const ROADMAP_APP = {
-    screens: [
-        {
-            title: "Terminal de Operación en Planta",
-            description: "Interfaz operativa para gestionar tareas, registrar producción y controlar incidencias en tiempo real.",
-            image: "imagenes/jumosol1.jpeg"
-        },
-        {
-            title: "Gestión Estratégica TOP 60",
-            description: "Cuadro de mando integral con seguimiento de ahorros, productividad y reuniones estratégicas por área.",
-            image: "imagenes/jumosol2.jpeg"
-        }
-    ]
-};
 
 function renderApps() {
     const gozenGrid = document.getElementById('grid-gozen');
-    const roadmapGrid = document.getElementById('grid-roadmap');
+    const jumosolGrid = document.getElementById('grid-jumosol');
 
     if (gozenGrid) {
         gozenGrid.innerHTML = GOZEN_APP.screens.map((screen) => `
