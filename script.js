@@ -3,6 +3,21 @@ const GOZEN_APP = {
         {
             title: "Panel de Administración",
             description: "Gestión centralizada de empresas y usuarios con acceso maestro.",
+            image: "imagenes/gozen1.jpeg"
+        },
+        {
+            title: "Matriz de Polivalencia",
+            description: "Visualización técnica de equipos, procesos y autoevaluaciones en tiempo real.",
+            image: "imagenes/gozen2.jpeg"
+        }
+    ]
+};
+
+const JUMOSOL_APP = {
+    screens: [
+        {
+            title: "Panel de Administración",
+            description: "Gestión centralizada de empresas y usuarios con acceso maestro.",
             image: "imagenes/jumosol1.jpeg"
         },
         {
