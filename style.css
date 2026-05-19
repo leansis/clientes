@@ -42,6 +42,9 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+    transition:
+        transform .25s ease,
+        opacity .25s ease;
 }
 
 /* ───────────────────────────── */
