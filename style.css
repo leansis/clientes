@@ -519,14 +519,14 @@ a {
 }
 .feature-phones {
     display: flex;
+    heigth: stretch;
     gap: 16px;
     justify-content: center;
     align-items: flex-end;
-    padding: 24px;
+    padding: 12px;
 }
 .feature-phones img {
     width: auto;
-    height: 300px;
     object-fit: contain;
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.15);
