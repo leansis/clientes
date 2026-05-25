@@ -28,6 +28,16 @@ const JUMOSOL_APP = {
     ]
 };
 
+const SGAPP_APP = {
+    screens: [
+        {
+            title: "Mapa de navegacion",
+            description: "La siguiente imagen muestra el mapa de navegación completo de la aplicación.",
+            image: "imagenes/sgaP-mapa.png"
+        }
+    ]
+};
+
 
 function renderApps() {
     const gozenGrid = document.getElementById('grid-gozen');
@@ -57,6 +67,18 @@ function renderApps() {
         `).join('');
     }
 
+    if (sgaPGrid) {
+        sgaPGrid.innerHTML = SGAP_APP.screens.map((screen) => `
+            <div class="screenshot-container">
+                <div class="screenshot-info">
+                    <h3>${screen.title}</h3>
+                    <p>${screen.description}</p>
+                </div>
+                <img src="${screen.image}" alt="${screen.title}" class="screenshot-img" onerror="this.src='https://placehold.co/1200x800/f8f9fa/333333?text=${encodeURIComponent(screen.title)}'">
+            </div>
+        `).join('');
+    }
+    
     initScrollReveal();
 }
 
