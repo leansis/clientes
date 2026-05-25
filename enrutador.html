@@ -23,60 +23,206 @@
     </nav>
 
     <main>
-        <!-- HERO -->
+        <!-- ── Hero ── -->
         <section class="hero">
             <div class="hero-container">
                 <div class="hero-content">
-                    <h1>SGA (Power Apps)</h1>
-                    <p>Solución digital para la gestión de almacén lista para operar. Control en tiempo real de recepciones, ubicaciones, pedidos, cargas y devoluciones — todo desde una app móvil con escaneo de códigos QR.</p>
-                    <div style="display: flex; flex-direction: row; gap: 12px; flex-wrap: wrap; align-items: center;">
-                        <a href="https://script.google.com/macros/s/AKfycbx5Mr45qoNUhdH5XfZWUaFQiAYhrQrS_8Zb9p-LZnEYa28xlyuZL4ai3Tct5u0xpuT6/exec" class="cta-button">Acceder a la App</a>
-                        <a href="#" style="font-weight:600; font-size:14px; background-color: orange; color: white; border-radius: 10px; padding: 14px 15px; display:flex; flex-direction: column; justify-content: center; align-items: center; text-decoration:none;">↓ Manual PDF</a>
+                    <h1>Enrutador</h1>
+                    <p>Plataforma logística para la planificación y asignación de rutas de transporte, diseñada para organizar tiendas, vehículos, conductores y retornos desde una única interfaz visual.</p>
+                    <div style="display: flex; flex-direction: row; gap: 12px; flex-wrap: wrap; align-items: center; justify-content:center ;" >
+                        <a href="https://costumizable-git-main-leansisproductivity-7042s-projects.vercel.app" target="_blank" class="cta-button">Acceder a la App</a>
+                        <a href="manuales/manual-jumosol.pdf" style="font-weight:600; font-size:14px; background-color: orange; color: white; border-radius: 10px; padding: 14px 15px; display:flex; flex-direction: column; justify-content: center; align-items: center;">
+                            ↓ Manual PDF
+                        </a>
                     </div>
                 </div>
                 <div class="video-container">
-                    <!-- PLACEHOLDER: reemplazar con imagen/vídeo representativo de la app -->
-                  <img>
+                    <video autoplay="" loop="" muted="" playsinline="">
+                          <source src="videos/jumosol.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </section>
-
-        <!-- CAPTURAS / GALERÍA -->
+        
+        <!-- ── Galería ── -->
         <section class="screenshots-section">
             <div class="section-title">
                 <h2>Explorar la Interfaz</h2>
             </div>
-            <div class="screenshots-grid" id="grid-sgaP"></div>
+            <div class="screenshots-grid" id="grid-jumosol"></div>
         </section>
-
-        <!-- FUNCIONALIDADES -->
-        <section>
-            <div class="features-section">
-                <div class="section-title">
-                    <h2>Funcionalidades Clave</h2>
-                </div>
-
-                <!-- PREPARADOR DE PEDIDOS -->
-                <div class="feature-block">
-                    <div class="feature-video">
-                        <div class="feature-phones">
-                          <img src="imagenes/sgaP-picking.png">
-                        </div>
-                    </div>
-                    <div class="feature-text">
-                        <span class="feature-tag">Preparador de Pedidos</span>
-                        <h3>Picking guiado por artículo</h3>
-                        <p>El operario selecciona el pedido, escanea el pallet y recibe la lista de artículos con sus ubicaciones. Cada línea se confirma individualmente hasta completar el pallet.</p>
-                        <ul class="feature-list">
-                            <li>Asignación de pallet al inicio del proceso</li>
-                            <li>Lista de artículos con ubicación y cantidad a preparar</li>
-                            <li>VER PICK para revisar y deshacer líneas ya preparadas</li>
-                            <li>Asignación de muelle al completar el pallet</li>
-                        </ul>
-                    </div>
-                </div>
-
+        
+        <!-- ── Funcionalidades ── -->
+        <section class="features-section">
+            <div class="section-title">
+                <h2>Funcionalidades Clave</h2>
             </div>
+        
+            <!-- BLOQUE 1 -->
+            <div class="feature-block">
+                <div class="feature-image">
+                    <img src="imagenes/jumosol-inicio.png" alt="Pantalla de inicio del enrutador">
+                </div>
+                <div class="feature-text">
+                    <span class="feature-tag">Inicio</span>
+                    <h3>Carga inicial de planificación</h3>
+                    <p>La aplicación comienza con una pantalla de preparación donde cada usuario puede cargar sus propios archivos Excel antes de iniciar la planificación de rutas.</p>
+                    <ul class="feature-list">
+                        <li>Carga manual de necesidades, flota y restricciones</li>
+                        <li>Funcionamiento sin persistencia de datos entre sesiones</li>
+                        <li>Cada usuario puede trabajar con sus propios ficheros</li>
+                        <li>Acceso directo al planificador tras validar la información</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <!-- BLOQUE 2 -->
+            <div class="feature-block reverse">
+                <div class="feature-image">
+                    <img src="imagenes/jumosol-talleres.png" alt="Panel principal del planificador">
+                </div>
+                <div class="feature-text">
+                    <span class="feature-tag">Planificador</span>
+                    <h3>Vista global de rutas y recursos</h3>
+                    <p>Panel centralizado que permite visualizar todas las tiendas, viajes y recursos logísticos disponibles en tiempo real dentro de una única pantalla operativa.</p>
+                    <ul class="feature-list">
+                        <li>Listado lateral de tiendas pendientes de asignación</li>
+                        <li>Visualización de camiones y capacidad disponible por viaje</li>
+                        <li>Panel independiente de conductores y remolques</li>
+                        <li>Distribución visual organizada por vehículos y viajes</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <!-- BLOQUE 3 -->
+            <div class="feature-block">
+                <div class="feature-image">
+                    <img src="imagenes/jumosol-top5-terminal.png" alt="Asignación de tiendas">
+                </div>
+                <div class="feature-text">
+                    <span class="feature-tag">Asignaciones</span>
+                    <h3>Asignación de tiendas a viajes</h3>
+                    <p>La plataforma permite asignar tiendas directamente a viajes disponibles mediante formularios rápidos e intuitivos integrados en el planificador.</p>
+                    <ul class="feature-list">
+                        <li>Selección de camión y número de viaje</li>
+                        <li>Asignación visual desde la lista de tiendas</li>
+                        <li>Distribución automática dentro de cada ruta</li>
+                        <li>Control de carga y ocupación por viaje</li>
+                        <li>Edición rápida de asignaciones ya realizadas</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <!-- BLOQUE 4 -->
+            <div class="feature-block reverse">
+                <div class="feature-image">
+                    <img src="imagenes/jumosol-top5-dash.png" alt="Auto asignación de tiendas">
+                </div>
+                <div class="feature-text">
+                    <span class="feature-tag">Automatización</span>
+                    <h3>Asignación automática de tiendas</h3>
+                    <p>El sistema incluye funciones de auto planificación que permiten distribuir tiendas automáticamente sobre los viajes disponibles según las restricciones cargadas.</p>
+                    <ul class="feature-list">
+                        <li>Botón de auto tiendas para planificación automática</li>
+                        <li>Reasignación rápida de rutas y cargas</li>
+                        <li>Visualización inmediata de resultados</li>
+                        <li>Compatibilidad con restricciones y capacidades configuradas</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <!-- BLOQUE 5 -->
+            <div class="feature-block">
+                <div class="feature-image">
+                    <img src="imagenes/jumosol-top15-indicadores.png" alt="Gestión de recursos">
+                </div>
+                <div class="feature-text">
+                    <span class="feature-tag">Recursos</span>
+                    <h3>Gestión de conductores, camiones y remolques</h3>
+                    <p>La aplicación permite administrar todos los recursos logísticos necesarios para la planificación diaria desde la misma interfaz de trabajo.</p>
+                    <ul class="feature-list">
+                        <li>Asignación de conductores a vehículos y viajes</li>
+                        <li>Gestión de remolques disponibles y ocupados</li>
+                        <li>Visualización rápida de recursos sin asignar</li>
+                        <li>Capacidad configurable para cada vehículo y remolque</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <!-- BLOQUE 6 -->
+            <div class="feature-block reverse">
+                <div class="feature-image">
+                    <img src="imagenes/jumosol-top15-planaccon.png" alt="Edición de datos">
+                </div>
+                <div class="feature-text">
+                    <span class="feature-tag">Configuración</span>
+                    <h3>Edición dinámica de datos operativos</h3>
+                    <p>El sistema permite modificar información operativa durante la planificación para adaptar rápidamente las rutas a cambios diarios.</p>
+                    <ul class="feature-list">
+                        <li>Edición de datos de tiendas directamente desde el panel</li>
+                        <li>Añadir nuevas tiendas mediante carga de Excel</li>
+                        <li>Actualización manual de vehículos y conductores</li>
+                        <li>Gestión flexible de restricciones operativas</li>
+                        <li>Replanificación inmediata sin reiniciar la sesión</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <!-- BLOQUE 7 -->
+            <div class="feature-block">
+                <div class="feature-image">
+                    <img src="imagenes/jumosol-top60.png" alt="Gestión de retornos">
+                </div>
+                <div class="feature-text">
+                    <span class="feature-tag">Retornos</span>
+                    <h3>Control de retornos y recogidas</h3>
+                    <p>La plataforma incorpora una sección específica para gestionar retornos asociados a clientes y pedidos dentro de la planificación logística.</p>
+                    <ul class="feature-list">
+                        <li>Listado de retornos pendientes</li>
+                        <li>Asignación de retornos a rutas existentes</li>
+                        <li>Visualización de pedidos asociados</li>
+                        <li>Control del espacio ocupado por retornos</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <!-- BLOQUE 8 -->
+            <div class="feature-block reverse">
+                <div class="feature-image">
+                    <img src="imagenes/jumosol-top60-cuadrodemando.png" alt="Control de ocupación">
+                </div>
+                <div class="feature-text">
+                    <span class="feature-tag">Capacidad</span>
+                    <h3>Seguimiento de ocupación y disponibilidad</h3>
+                    <p>El planificador muestra constantemente la capacidad disponible y la ocupación de cada viaje para facilitar la toma de decisiones durante la planificación.</p>
+                    <ul class="feature-list">
+                        <li>Visualización de espacio disponible por camión</li>
+                        <li>Indicadores de sobrecapacidad y restricciones</li>
+                        <li>Control de ocupación en tiempo real</li>
+                        <li>Resumen global de capacidad pendiente</li>
+                        <li>Panel visual con estados y alertas</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <!-- BLOQUE 9 -->
+            <div class="feature-block">
+                <div class="feature-image">
+                    <img src="imagenes/jumosol-top60-evolucionsemanal.png" alt="Exportación de planificación">
+                </div>
+                <div class="feature-text">
+                    <span class="feature-tag">Exportación</span>
+                    <h3>Exportación y cierre de planificación</h3>
+                    <p>Una vez completada la asignación de rutas y recursos, la planificación puede exportarse para su distribución y uso operativo.</p>
+                    <ul class="feature-list">
+                        <li>Exportación de la planificación final</li>
+                        <li>Preparación rápida para operaciones diarias</li>
+                        <li>Generación de rutas organizadas por vehículo</li>
+                        <li>Interfaz optimizada para uso intensivo y planificación rápida</li>
+                    </ul>
+                </div>
+            </div>
+        
         </section>
 
     </main>
