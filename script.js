@@ -28,7 +28,7 @@ const JUMOSOL_APP = {
     ]
 };
 
-const SGAPP_APP = {
+const SGAP_APP = {
     screens: [
         {
             title: "Mapa de navegacion",
@@ -42,6 +42,7 @@ const SGAPP_APP = {
 function renderApps() {
     const gozenGrid = document.getElementById('grid-gozen');
     const jumosolGrid = document.getElementById('grid-jumosol');
+    const sgaPGrid = document.getElementById('grid-sgaP');
 
     if (gozenGrid) {
         gozenGrid.innerHTML = GOZEN_APP.screens.map((screen) => `
