@@ -33,6 +33,12 @@
     --accent-soft: rgba(107, 114, 128, 0.12);
 }
 
+.enrutador-theme {
+    --accent: #dc2626;
+    --accent-light: #fef2f2;
+    --accent-soft: rgba(220, 38, 38, 0.12);
+}
+
 * {
     margin: 0;
     padding: 0;
