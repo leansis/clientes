@@ -102,7 +102,7 @@ function renderApps() {
                     <p>${screen.description}</p>
                 </div>
                 <div style="display:flex; flex-direction:row; background:white;">
-                    <img src="${screen.image1}" class="img-enlace" alt="${screen.title}" class="screenshot-img" onerror="this.src='https://placehold.co/1200x800/f8f9fa/333333?text=${encodeURIComponent(screen.title)}'">
+                    <img src="${screen.image1}" href="manuales/necesidades.xlsx" class="img-enlace" alt="${screen.title}" class="screenshot-img" onerror="this.src='https://placehold.co/1200x800/f8f9fa/333333?text=${encodeURIComponent(screen.title)}'">
                     <img src="${screen.image2}" class="img-enlace" alt="${screen.title}" class="screenshot-img" onerror="this.src='https://placehold.co/1200x800/f8f9fa/333333?text=${encodeURIComponent(screen.title)}'">
                     <img src="${screen.image3}" class="img-enlace" alt="${screen.title}" class="screenshot-img" onerror="this.src='https://placehold.co/1200x800/f8f9fa/333333?text=${encodeURIComponent(screen.title)}'">
                 </div>
