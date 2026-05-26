@@ -611,10 +611,6 @@ img {
         width: 100%;
         max-width: 600px;
     }
-
-    .img-triple {
-        flex-direction: column;
-    }
 }
 
 @media (max-width: 768px) {
@@ -646,5 +642,9 @@ img {
 
     .section-title h2 {
         font-size: 26px;
+    }
+
+    .img-triple {
+        flex-direction: column;
     }
 }
