@@ -539,10 +539,8 @@ a {
 }
 
 .img-enlace {
-    flex:1;
     transition: all 0.3s ease;
     background:white;
-    width:213px;
 }
 
 a:hover .img-enlace{
