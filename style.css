@@ -612,7 +612,9 @@ img {
         max-width: 600px;
     }
 
-    .
+    .3img {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 768px) {
