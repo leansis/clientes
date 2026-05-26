@@ -612,7 +612,7 @@ img {
         max-width: 600px;
     }
 
-    .3img {
+    .img-triple {
         flex-direction: column;
     }
 }
