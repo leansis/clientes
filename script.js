@@ -38,11 +38,25 @@ const SGAP_APP = {
     ]
 };
 
+const ENRUTADOR_APP = {
+    screens: [
+        {
+            title: "Plantillas de excel",
+            description: "A continuacion se pueden descargar plantillas de excel para la aplicacion.",
+            image1: "imagenes/enrutador-necesidades.png",
+            image2: "imagenes/enrutador-flota.png",
+            image3: "imagenes/enrutador-restricciones.png"
+        }
+    ]
+};
+
 
 function renderApps() {
     const gozenGrid = document.getElementById('grid-gozen');
     const jumosolGrid = document.getElementById('grid-jumosol');
     const sgaPGrid = document.getElementById('grid-sgaP');
+    const enrutadorGrid = document.getElementById('grid-enrutador');
+
 
     if (gozenGrid) {
         gozenGrid.innerHTML = GOZEN_APP.screens.map((screen) => `
@@ -76,6 +90,22 @@ function renderApps() {
                     <p>${screen.description}</p>
                 </div>
                 <img src="${screen.image}" alt="${screen.title}" class="screenshot-img" onerror="this.src='https://placehold.co/1200x800/f8f9fa/333333?text=${encodeURIComponent(screen.title)}'">
+            </div>
+        `).join('');
+    }
+
+    if (enrutadorGrid) {
+        enrutadorGrid.innerHTML = ENRUTADOR_APP.screens.map((screen) => `
+            <div class="screenshot-container">
+                <div class="screenshot-info">
+                    <h3>${screen.title}</h3>
+                    <p>${screen.description}</p>
+                </div>
+                <div style="display:flex; flex-direction:row;">
+                    <img src="${screen.image1}" alt="${screen.title}" class="screenshot-img" onerror="this.src='https://placehold.co/1200x800/f8f9fa/333333?text=${encodeURIComponent(screen.title)}'">
+                    <img src="${screen.image2}" alt="${screen.title}" class="screenshot-img" onerror="this.src='https://placehold.co/1200x800/f8f9fa/333333?text=${encodeURIComponent(screen.title)}'">
+                    <img src="${screen.image2}" alt="${screen.title}" class="screenshot-img" onerror="this.src='https://placehold.co/1200x800/f8f9fa/333333?text=${encodeURIComponent(screen.title)}'">
+                </div>
             </div>
         `).join('');
     }
