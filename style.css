@@ -540,12 +540,15 @@ a {
 
 .img-enlace {
     width: 33%
+    transition: all 0.3s ease;
+    background:white;
 }
 
 .img-enlace:hover {
     transform: scale(0.8);
     filter: blur(0.4px);
     opacity: 0.9;
+    cursor:pointer;
 }
 
 /* ───────────────────────────── */
