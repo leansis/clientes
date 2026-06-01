@@ -102,9 +102,9 @@ function renderApps() {
                     <p>${screen.description}</p>
                 </div>
                 <div class="img-triple">
-                    <a href="manuales/necesidades.xlsx" style="flex:1;"><img src="${screen.image1}" class="img-enlace" alt="${screen.title}" class="screenshot-img" onerror="this.src='https://placehold.co/1200x800/f8f9fa/333333?text=${encodeURIComponent(screen.title)}'"></a>
-                    <a href="manuales/flota.xlsx" style="flex:1;"><img src="${screen.image2}" class="img-enlace" alt="${screen.title}" class="screenshot-img" onerror="this.src='https://placehold.co/1200x800/f8f9fa/333333?text=${encodeURIComponent(screen.title)}'"></a>
-                    <a href="manuales/restricciones.xlsx" style="flex:1; padding:8px;"><img src="${screen.image3}" class="img-enlace" alt="${screen.title}" class="screenshot-img" onerror="this.src='https://placehold.co/1200x800/f8f9fa/333333?text=${encodeURIComponent(screen.title)}'"></a>
+                    <a href="manuales/Necesidades-ejemplo.xlsx" style="flex:1;"><img src="${screen.image1}" class="img-enlace" alt="${screen.title}" class="screenshot-img" onerror="this.src='https://placehold.co/1200x800/f8f9fa/333333?text=${encodeURIComponent(screen.title)}'"></a>
+                    <a href="manuales/Flota-ejemplo.xlsx" style="flex:1;"><img src="${screen.image2}" class="img-enlace" alt="${screen.title}" class="screenshot-img" onerror="this.src='https://placehold.co/1200x800/f8f9fa/333333?text=${encodeURIComponent(screen.title)}'"></a>
+                    <a href="manuales/Restricciones-ejemplo.xlsx" style="flex:1; padding:8px;"><img src="${screen.image3}" class="img-enlace" alt="${screen.title}" class="screenshot-img" onerror="this.src='https://placehold.co/1200x800/f8f9fa/333333?text=${encodeURIComponent(screen.title)}'"></a>
                 </div>
             </div>
         `).join('');
