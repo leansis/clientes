@@ -39,6 +39,12 @@
     --accent-soft: rgba(220, 38, 38, 0.12);
 }
 
+.crm-theme {
+    --accent: #ffd000;
+    --accent-light: #fffbe6;
+    --accent-soft: rgba(255, 208, 0, 0.12);
+}
+
 * {
     margin: 0;
     padding: 0;
