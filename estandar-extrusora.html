@@ -263,6 +263,55 @@
   footer .legend span{display:inline-flex;align-items:center;gap:6px}
   footer .sw{width:11px;height:11px;border-radius:2px;display:inline-block}
 
+  /* ---------- modal de vídeo ---------- */
+  .modal-overlay{
+    position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+    padding:clamp(14px,4vw,48px);
+    background:rgba(6,9,12,.82);backdrop-filter:blur(6px);
+    opacity:0;visibility:hidden;transition:opacity .22s;
+  }
+  .modal-overlay.open{opacity:1;visibility:visible}
+  .modal{
+    width:min(960px,100%);background:var(--panel);border:1px solid var(--line-strong);
+    border-radius:6px;overflow:hidden;position:relative;
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.9);
+    transform:translateY(12px) scale(.985);transition:transform .24s cubic-bezier(.22,.61,.36,1);
+  }
+  .modal-overlay.open .modal{transform:none}
+  .modal .corner{border-color:rgba(255,176,0,.5)}
+  .modal-head{
+    display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid var(--line);
+  }
+  .modal-head .mnum{
+    font-family:"Space Mono",monospace;font-weight:700;font-size:11px;color:#241a00;
+    background:var(--signal);border-radius:3px;padding:4px 8px;white-space:nowrap;letter-spacing:.02em;
+  }
+  .modal-head .mtitles{min-width:0;flex:1}
+  .modal-head .mtag{
+    font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--muted-2);
+  }
+  .modal-head .mtitle{
+    font-family:"Archivo",sans-serif;font-weight:800;text-transform:uppercase;font-size:15px;
+    line-height:1.15;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .modal-close{
+    flex:0 0 auto;width:36px;height:36px;border-radius:4px;cursor:pointer;
+    background:var(--panel-2);border:1px solid var(--line-strong);color:var(--ink);
+    display:grid;place-items:center;transition:.16s;
+  }
+  .modal-close:hover,.modal-close:focus-visible{background:var(--signal);color:#241a00;border-color:var(--signal);outline:none}
+  .modal-close svg{width:17px;height:17px}
+  .modal-video{position:relative;aspect-ratio:16/9;background:#000}
+  .modal-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+  .modal-foot{
+    display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:space-between;align-items:center;
+    padding:10px 16px;border-top:1px solid var(--line);
+    font-family:"Space Mono",monospace;font-size:10px;color:var(--muted-2);letter-spacing:.05em;
+  }
+  .modal-foot a{color:var(--active);text-decoration:none}
+  .modal-foot a:hover{text-decoration:underline}
+
   @media (prefers-reduced-motion: reduce){
     *{transition:none !important}
   }
@@ -335,11 +384,37 @@
 
 </div>
 
+<!-- MODAL DE VÍDEO -->
+<div class="modal-overlay" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+    <div class="modal-head">
+      <span class="mnum" id="modalNum">VID</span>
+      <div class="mtitles">
+        <div class="mtag" id="modalTag">Vídeo de operación</div>
+        <div class="mtitle" id="modalTitle">—</div>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="Cerrar vídeo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="modal-video" id="modalVideo"></div>
+    <div class="modal-foot">
+      <span id="modalCode">—</span>
+      <a id="modalYt" href="#" target="_blank" rel="noopener">Ver en YouTube ↗</a>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ============================================================
    DATOS DE LAS ZONAS
-   Sustituye cada href="#" por la URL real del estándar o vídeo.
-   type: "doc" (documento) | "video" (vídeo de operación)
+   - Documentos:  type:"doc"   -> sustituye href:"#" por la URL real del estándar.
+   - Vídeos:      type:"video" -> yt:"ID_DE_YOUTUBE"  (los 11 caracteres tras
+                  watch?v=...). Se abren en la ventana flotante del reproductor.
+                  Los vídeos actuales son EJEMPLOS de líneas de extrusión reales;
+                  cámbialos por tus propios vídeos de formación cuando los tengas.
    rect / focus en % sobre la imagen (0-100). Ajusta si reencuadras la foto.
    ============================================================ */
 const SECTIONS = [
@@ -349,7 +424,7 @@ const SECTIONS = [
     rect:{l:80,t:8,w:17,h:20}, focus:{x:87,y:16},
     links:[
       {t:"Secado y control de humedad del material", c:"STD-EXT-002", type:"doc", href:"#"},
-      {t:"Arranque del secador", c:"VID-EXT-002", type:"video", href:"#"},
+      {t:"Arranque del secador", c:"VID-EXT-002", type:"video", yt:"O1K8VZrQFVo"},
       {t:"Limpieza y cambio de filtro", c:"STD-EXT-003", type:"doc", href:"#"}
     ]
   },
@@ -358,7 +433,7 @@ const SECTIONS = [
     desc:"Punto de carga de la granza al cilindro. Mantén nivel y limpieza para un flujo de material estable.",
     rect:{l:62,t:13,w:26,h:37}, focus:{x:74,y:30},
     links:[
-      {t:"Alimentar material por la tolva", c:"VID-EXT-011", type:"video", href:"#"},
+      {t:"Alimentar material por la tolva", c:"VID-EXT-011", type:"video", yt:"ugr12lEa1q4"},
       {t:"Purga y limpieza de la tolva", c:"STD-EXT-012", type:"doc", href:"#"},
       {t:"Cambio de material / color", c:"STD-EXT-013", type:"doc", href:"#"}
     ]
@@ -370,7 +445,7 @@ const SECTIONS = [
     links:[
       {t:"Introducir parámetros de temperatura", c:"STD-EXT-021", type:"doc", href:"#"},
       {t:"Perfil térmico por zonas", c:"STD-EXT-022", type:"doc", href:"#"},
-      {t:"Arranque en frío del cilindro", c:"VID-EXT-021", type:"video", href:"#"}
+      {t:"Arranque en frío del cilindro", c:"VID-EXT-021", type:"video", yt:"eqzR1GHCgx0"}
     ]
   },
   {
@@ -378,7 +453,7 @@ const SECTIONS = [
     desc:"El tornillo que transporta, comprime y homogeneiza el material dentro del cañón.",
     rect:{l:53,t:52,w:11,h:13}, focus:{x:59,y:59},
     links:[
-      {t:"Cambio del husillo", c:"VID-EXT-031", type:"video", href:"#"},
+      {t:"Cambio del husillo", c:"VID-EXT-031", type:"video", yt:"KpBqVHq40-0"},
       {t:"Limpieza del husillo", c:"STD-EXT-032", type:"doc", href:"#"},
       {t:"Inspección de desgaste", c:"STD-EXT-033", type:"doc", href:"#"}
     ]
@@ -390,7 +465,7 @@ const SECTIONS = [
     links:[
       {t:"Ajuste de velocidad de giro (RPM)", c:"STD-EXT-041", type:"doc", href:"#"},
       {t:"Nivel de aceite del reductor", c:"STD-EXT-042", type:"doc", href:"#"},
-      {t:"Arranque y parada seguros", c:"VID-EXT-041", type:"video", href:"#"}
+      {t:"Arranque y parada seguros", c:"VID-EXT-041", type:"video", yt:"eqzR1GHCgx0"}
     ]
   },
   {
@@ -398,7 +473,7 @@ const SECTIONS = [
     desc:"Interfaz HMI para introducir parámetros, vigilar el proceso y gestionar alarmas.",
     rect:{l:39,t:38,w:12,h:13}, focus:{x:45,y:44},
     links:[
-      {t:"Introducir parámetros de proceso", c:"VID-EXT-051", type:"video", href:"#"},
+      {t:"Introducir parámetros de proceso", c:"VID-EXT-051", type:"video", yt:"O1K8VZrQFVo"},
       {t:"Gestión de alarmas", c:"STD-EXT-052", type:"doc", href:"#"},
       {t:"Guardar y cargar recetas", c:"STD-EXT-053", type:"doc", href:"#"}
     ]
@@ -408,7 +483,7 @@ const SECTIONS = [
     desc:"Da forma de tubo al fundido. El calibre del tubo depende del molde montado.",
     rect:{l:29,t:48,w:9,h:14}, focus:{x:33,y:55},
     links:[
-      {t:"Cambio de molde / calibre", c:"VID-EXT-061", type:"video", href:"#"},
+      {t:"Cambio de molde / calibre", c:"VID-EXT-061", type:"video", yt:"ugr12lEa1q4"},
       {t:"Ajuste de espesor de pared", c:"STD-EXT-062", type:"doc", href:"#"},
       {t:"Limpieza del cabezal", c:"STD-EXT-063", type:"doc", href:"#"}
     ]
@@ -419,7 +494,7 @@ const SECTIONS = [
     rect:{l:4,t:45,w:26,h:24}, focus:{x:17,y:57},
     links:[
       {t:"Ajuste de vacío y refrigeración", c:"STD-EXT-071", type:"doc", href:"#"},
-      {t:"Cambio de calibrador", c:"VID-EXT-071", type:"video", href:"#"},
+      {t:"Cambio de calibrador", c:"VID-EXT-071", type:"video", yt:"ugr12lEa1q4"},
       {t:"Control de diámetro exterior", c:"STD-EXT-072", type:"doc", href:"#"}
     ]
   },
@@ -439,7 +514,8 @@ const Z = {tolva:2,motor:2,calibrador:2,secador:2,cilindro:3,tubo:3,panel:4,husi
 const ICON = {
   doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M9 13h6M9 17h4"/></svg>',
   video:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
-  go:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+  go:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  play:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z" fill="currentColor" stroke="none"/></svg>'
 };
 
 const stage = document.getElementById('stage');
@@ -492,12 +568,18 @@ function render(s){
     <p class="desc">${s.desc}</p>
     <div class="std-label">Estándares · ${s.links.length}</div>
     <ul class="links">
-      ${s.links.map(l=>`
-        <li><a href="${l.href}" ${l.href==='#'?'onclick="return false"':'target="_blank" rel="noopener"'}>
-          <span class="kind ${l.type}">${ICON[l.type]}</span>
-          <span class="link-txt"><span class="t">${l.t}</span><span class="c">${l.type==='video'?'VÍDEO · ':''}${l.c}</span></span>
-          <span class="go">${ICON.go}</span>
-        </a></li>`).join('')}
+      ${s.links.map(l=>{
+        const badge = `<span class="kind ${l.type}">${ICON[l.type]}</span>`;
+        const txt = `<span class="link-txt"><span class="t">${l.t}</span><span class="c">${l.type==='video'?'VÍDEO · ':''}${l.c}</span></span>`;
+        if(l.type==='video' && l.yt){
+          return `<li><a class="is-video" href="https://www.youtube.com/watch?v=${l.yt}"
+            data-yt="${l.yt}" data-vtitle="${l.t}" data-vcode="${l.c}" data-vnum="${s.num}" data-vtag="${s.tag}">
+            ${badge}${txt}<span class="go">${ICON.play}</span></a></li>`;
+        }
+        const href = l.href || '#';
+        return `<li><a href="${href}" ${href==='#'?'data-noop="1"':'target="_blank" rel="noopener"'}>
+          ${badge}${txt}<span class="go">${ICON.go}</span></a></li>`;
+      }).join('')}
     </ul>`;
 }
 
@@ -524,6 +606,48 @@ function reset(){
   highlight(null);
   pinnedId=null;
 }
+
+/* ---------- reproductor flotante de vídeo ---------- */
+const modal = document.getElementById('videoModal');
+const modalVideo = document.getElementById('modalVideo');
+let lastFocus = null;
+
+function openVideo(d){
+  lastFocus = document.activeElement;
+  document.getElementById('modalTitle').textContent = d.title;
+  document.getElementById('modalTag').textContent = d.tag || 'Vídeo de operación';
+  document.getElementById('modalCode').textContent = d.code;
+  document.getElementById('modalNum').textContent = (d.num && d.num!=='◆') ? ('VID · '+d.num) : 'VÍDEO';
+  document.getElementById('modalYt').href = 'https://www.youtube.com/watch?v='+d.yt;
+  modalVideo.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/'+d.yt+
+    '?autoplay=1&rel=0&modestbranding=1" title="'+d.title+
+    '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+  document.getElementById('modalClose').focus();
+}
+
+function closeVideo(){
+  modal.classList.remove('open');
+  modalVideo.innerHTML='';          /* vacía el iframe = detiene la reproducción */
+  document.body.style.overflow='';
+  if(lastFocus && lastFocus.focus) lastFocus.focus();
+}
+
+/* delegación: abre modal en enlaces de vídeo, ignora docs placeholder */
+infoContent.addEventListener('click', e=>{
+  const a = e.target.closest('a'); if(!a) return;
+  if(a.classList.contains('is-video')){
+    e.preventDefault();
+    openVideo({yt:a.dataset.yt, title:a.dataset.vtitle, code:a.dataset.vcode, num:a.dataset.vnum, tag:a.dataset.vtag});
+  } else if(a.dataset.noop){
+    e.preventDefault();
+  }
+});
+
+document.getElementById('modalClose').addEventListener('click', closeVideo);
+modal.addEventListener('click', e=>{ if(e.target===modal) closeVideo(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && modal.classList.contains('open')) closeVideo(); });
 </script>
 </body>
 </html>
